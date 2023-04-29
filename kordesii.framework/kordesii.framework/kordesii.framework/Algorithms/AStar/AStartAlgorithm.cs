@@ -97,19 +97,11 @@ namespace kordesii.framework.Algorithms.AStar
         {
             var neighbors = new List<Point>();
 
-            for (int x = -1; x <= 1; x++)
-            {
-                for (int y = -1; y <= 1; y++)
-                {
-                    if (x == 0 && y == 0)
-                    {
-                        continue;
-                    }
-
-                    Point neighborPosition = new Point(position.X + x, position.Y + y);
-                    neighbors.Add(neighborPosition);
-                }
-            }
+            // Only add horizontal and vertical neighbors
+            neighbors.Add(new Point(position.X - 1, position.Y));
+            neighbors.Add(new Point(position.X + 1, position.Y));
+            neighbors.Add(new Point(position.X, position.Y - 1));
+            neighbors.Add(new Point(position.X, position.Y + 1));
 
             return neighbors;
         }
